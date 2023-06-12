@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { TapGestureHandler } from 'react-native-gesture-handler';
+import { View, StyleSheet, TouchableOpacity } from "react-native";
 import Animated, {
   withSpring,
   useAnimatedStyle,
@@ -45,8 +44,6 @@ const GameScreen: FC<GameScreenProps> = ({ navigation }) => {
 
   const { timeSeconds, startTimer, resetTimer, pauseTimer } = useSharedTimer();
 
-  console.log('timeSeconds', timeSeconds);
-
   const animationConfig = {
     duration: sizeAnimationDuration,
     easing: Easing.linear,
@@ -74,6 +71,8 @@ const GameScreen: FC<GameScreenProps> = ({ navigation }) => {
       setAttempts((prevAttempts) => prevAttempts + 1);
     }
   };
+
+  // Pause the timer and navigate to the end game screen
   const endGame = () => {
     pauseTimer?.();
     setElapsedTime(timeSeconds);
@@ -118,6 +117,7 @@ const GameScreen: FC<GameScreenProps> = ({ navigation }) => {
     };
   });
 
+  // Start the timer when the screen is loaded
   useEffect(() => {
     if (timeSeconds) {
       resetTimer?.();
@@ -146,6 +146,7 @@ const GameScreen: FC<GameScreenProps> = ({ navigation }) => {
     );
   }, [timeSeconds, offset, offsetY]);
 
+  // End the game when the attempts are equal to the max attempts
   useEffect(() => {
     if (attempts === maxAttempts - 1) {
       endGame();
@@ -168,14 +169,14 @@ const GameScreen: FC<GameScreenProps> = ({ navigation }) => {
         </View>
       </View>
       <View>
-        <TapGestureHandler
-          onEnded={() => {
+        <TouchableOpacity
+          onPress={() => {
             increaseSpeed();
             reduceBallSize();
             increaseAttempts();
           }}>
           <Animated.View style={[styles.ball, springStyle, animatedViewStyle]} />
-        </TapGestureHandler>
+        </TouchableOpacity>
       </View>
     </View>
   );

@@ -33,7 +33,7 @@ const ScoresScreen = () => {
       </TemplateText>
 
       {scores?.length > 0 &&
-        sortBy(scores, 'score')?.map((savedScore: ScoreType, index) => (
+        sortBy(scores, 'score')?.slice(0, 10)?.map((savedScore: ScoreType, index) => (
           <View key={`${savedScore?.score} - ${index}`} style={styles.scoreCard}>
             <TemplateText
               size={16}
