@@ -30,6 +30,8 @@ The project structure is organized as follows:
 
 - `/assets`: Contains static assets such as images, fonts, and other resources.
 - `/components`: Contains reusable React components used throughout the app.
+- `/constants`: Contains app-wide constants such as colors, fonts, and other styles.
+- `/hooks`: Contains custom React hooks.
 - `/screens`: Contains the main app screens or views.
 - `/navigation`: Contains the app's navigation logic and configuration.
 - `/utils`: Contains utility/helper functions.
