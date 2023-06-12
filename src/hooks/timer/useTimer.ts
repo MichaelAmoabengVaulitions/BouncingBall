@@ -10,18 +10,27 @@ export default (
   integar: boolean | null = false
 ) => {
   const [timeSeconds, setTimeSeconds] = useState(startTime || 0);
+
+  // Reset timer if startTime changes
   useEffect(() => {
     setTimeSeconds(startTime || 0);
   }, [startTime]);
+
   const [paused, setPaused] = useState<boolean>(startPaused);
+
   const [initialTime, setInititalTime] = useState<Moment | null>(null);
+
   const [previousTime, setPreviousTime] = useState<number>(0);
+
+  // Start timer if not paused and no initialTime
   useEffect(() => {
     if (!initialTime && !paused) {
       setInititalTime(integar ? moment().startOf('second') : moment());
       setPaused(false);
     }
   }, [paused]);
+
+  // Timer handler function
   const handler = (change: number) => {
     let result = startTime ? (previousTime || startTime) - change : change + previousTime;
     if (integar) {
@@ -31,13 +40,20 @@ export default (
       setTimeSeconds(result);
     }
   };
+
+  // Handle timer
   useIntervalHandler(handler, 1000, !paused, initialTime);
+
+  // Timer controls
   const startTimer = () => setPaused(false);
+
+  // Pause timer
   const pauseTimer = () => {
     setPreviousTime(timeSeconds);
     setInititalTime(null);
     setPaused(true);
   };
+
   return {
     timeSeconds,
     paused,

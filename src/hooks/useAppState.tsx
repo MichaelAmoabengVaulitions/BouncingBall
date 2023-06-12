@@ -10,9 +10,13 @@ interface Settings {
 }
 
 export default (settings: Settings) => {
+  // Settings is an optional object that can contain any of the following:
   const { onChange, onForeground, onBackground } = settings || {};
+
+  // The appState variable will contain the current state of the app.
   const [appState, setAppState] = useState<AppStateStatus>(AppState.currentState);
 
+  // The handleAppStateChange function will be called when the app state changes.
   const handleAppStateChange: (arg: AppStateStatus) => void = (nextAppState: AppStateStatus) => {
     if (nextAppState === 'active') {
       if (onForeground) {
@@ -29,6 +33,7 @@ export default (settings: Settings) => {
     }
   };
 
+  // The useEffect hook will run the handleAppStateChange function when the app state changes.
   useEffect(() => {
     const listener = AppState.addEventListener('change', handleAppStateChange);
 

@@ -5,6 +5,7 @@ export type ScoreType = {
   date: string;
 };
 const useScores = () => {
+  //Save score to async storage
   const saveScore = async (score: ScoreType) => {
     try {
       const scoresArray = await AsyncStorage.getItem('scores');
@@ -19,6 +20,8 @@ const useScores = () => {
       __DEV__ && console.log('[useScores save score] - Error', e);
     }
   };
+
+  //Get scores from async storage
   const getScores = async () => {
     try {
       const scoresArray = await AsyncStorage.getItem('scores');
