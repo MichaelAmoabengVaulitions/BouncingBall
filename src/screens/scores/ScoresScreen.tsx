@@ -11,8 +11,6 @@ import { wp } from '../../utils/getResponsiveSize';
 const ScoresScreen = () => {
   const [scores, setScores] = useState([]);
 
-  console.log('scores', JSON.stringify(scores, null, 2));
-
   const { getScores } = useScores();
 
   useEffect(() => {
