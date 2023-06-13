@@ -46,7 +46,7 @@ const ScoresScreen = () => {
         ))}
 
       {scores?.length === 0 && (
-        <TemplateText bold size={24} mt={wp(WRAPPER_MARGIN * 6)} mb={wp(WRAPPER_MARGIN)}>
+        <TemplateText bold size={16} mt={wp(WRAPPER_MARGIN * 10)} mb={wp(WRAPPER_MARGIN)} center>
           You do not have a ny best scores yet
         </TemplateText>
       )}
