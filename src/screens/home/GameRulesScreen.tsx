@@ -1,12 +1,10 @@
 import React, { FC } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
 import TemplateButton from '../../components/TemplateButton';
 import TemplateText from '../../components/TemplateText';
-import TemplateTouchable from '../../components/TemplateTouchable';
-import { PRIMARY, WHITE } from '../../constants/Colors';
-import { WRAPPED_SCREEN_WIDTH, WRAPPER_MARGIN } from '../../constants/Dimensions';
-import { GAME, GAME_END, SCORES } from '../../navigation/ScreenNames';
+import {  WRAPPER_MARGIN } from '../../constants/Dimensions';
+import { GAME,  SCORES } from '../../navigation/ScreenNames';
 import { wp } from '../../utils/getResponsiveSize';
 
 interface GameRulesScreenProps {

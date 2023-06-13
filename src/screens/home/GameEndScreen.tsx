@@ -14,6 +14,7 @@ interface GameEndScreenProps {
 }
 const GameEndScreen: FC<GameEndScreenProps> = ({ navigation, route }) => {
   const elapsedTime = route?.params?.elapsedTime;
+
   const { saveScore } = useScores();
 
   useEffect(() => {

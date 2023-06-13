@@ -1,9 +1,9 @@
 import { sortBy } from 'lodash';
 import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View,ScrollView, StyleSheet } from 'react-native';
 
 import TemplateText from '../../components/TemplateText';
-import { GREY, LIGHT_GREY, PRIMARY, WHITE } from '../../constants/Colors';
+import { LIGHT_GREY, PRIMARY, WHITE } from '../../constants/Colors';
 import { WRAPPER_MARGIN } from '../../constants/Dimensions';
 import useScores, { ScoreType } from '../../hooks/scores/useScores';
 import { wp } from '../../utils/getResponsiveSize';
